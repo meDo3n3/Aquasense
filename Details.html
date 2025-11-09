@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Open Water Diver Course - Diving Excursions</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#0a64ff",
+            "background-light": "#f5f6f8",
+            "background-dark": "#0f1623",
+            /* الألوان القديمة أدناه لم تعد مستخدمة في الهيدر/الفوتر 
+               "primary-dark": "#0A2463",
+               "secondary": "#3D99A6",
+               "charcoal": "#212529",
+               "light-gray": "#F8F9FA",
+            */
+          },
+          fontFamily: {
+            "display": ["Space Grotesk", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
+<div class="relative flex min-h-screen w-full flex-col">
+<header class="sticky top-0 z-50 flex w-full justify-center border-b border-gray-200/80 bg-background-light/80 dark:border-gray-700/80 dark:bg-background-dark/80 backdrop-blur-sm">
+<div class="flex w-full max-w-7xl items-center justify-between whitespace-nowrap px-4 sm:px-6 lg:px-8 py-3">
+<div class="flex items-center gap-4 text-gray-900 dark:text-white">
+<div class="text-primary text-2xl">
+<span class="material-symbols-outlined">scuba_diving</span>
+</div>
+<h2 class="text-lg font-bold tracking-tight">AquaSense</h2>
+</div>
+<div class="hidden items-center gap-8 md:flex">
+<a class="text-sm font-medium text-gray-700 hover:text-primary dark:text-gray-300 dark:hover:text-primary" href="#">Home</a>
+<a class="text-sm font-medium text-gray-700 hover:text-primary dark:text-gray-300 dark:hover:text-primary" href="#">Courses</a>
+<a class="text-sm font-medium text-gray-700 hover:text-primary dark:text-gray-300 dark:hover:text-primary" href="#">About</a>
+<a class="text-sm font-medium text-gray-700 hover:text-primary dark:text-gray-300 dark:hover:text-primary" href="#">Contact</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold tracking-wide shadow-sm transition-transform hover:scale-105">
+<span class="truncate">Book Now</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-grow">
+<div class="w-full">
+<div class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat items-center justify-center p-4 text-center" data-alt="Vibrant coral reef teeming with colorful fish and clear blue water." style='background-image: linear-gradient(rgba(10, 36, 99, 0.4) 0%, rgba(10, 36, 99, 0.6) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDR1UB3c-qi7pU6nPZ8bBypo-kLoKPYlr-2AcalLBhP5vYaqUh0LmgTbbTC4M9qBHaPXiG0jUcoViA47mTD-ufQZdoBitFSaLTIN-H5y4lanB_OUXGHFGMDn0q_G6WVDP_d3G-QT4kG5hhPnH3tpnABHH4GEDgEvlOPKj14PkXJj0bnKdIMJhuwKD-3UujkHptWn-tGXw9XEpJDOYDx2d53wKkLYFWcwnYEBfJp-zuzyqgtyf5lS0s6v-lHZCmDYHsH7XFfYdS4VPUs");'>
+<div class="flex flex-col gap-2">
+<h1 class="text-white text-4xl font-black leading-tight tracking-[-0.033em] md:text-6xl">Open Water Diver</h1>
+<h2 class="text-white/90 text-lg font-normal leading-normal md:text-xl">Your Adventure Into the Depths Begins Here</h2>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+<div class="lg:col-span-2">
+<div class="flex flex-col gap-4">
+<p class="text-gray-800 dark:text-gray-300 text-base font-normal leading-relaxed">
+                                Embark on the journey of a lifetime with our PADI Open Water Diver course. This is the world's most popular and widely recognized scuba course. Millions of people have learned to scuba dive and gone on to discover the wonders of the aquatic world through this course. You'll learn the fundamentals of scuba diving, including dive equipment and techniques, and earn a certification that is recognized worldwide.
+                            </p>
+<p class="text-gray-800 dark:text-gray-300 text-base font-normal leading-relaxed">
+                                Our experienced instructors will guide you through a combination of knowledge development, confined water dives to practice skills, and open water dives to put your skills to the test and explore. By the end of the course, you'll be a confident and certified diver, ready to explore the underwater world on your own.
+                            </p>
+</div>
+<div class="mt-10">
+<h2 class="text-gray-900 dark:text-white text-2xl font-bold leading-tight tracking-[-0.015em]">What's Included</h2>
+<ul class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-gray-800 dark:text-gray-300">Full Equipment Rental</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-gray-800 dark:text-gray-300">PADI Certification Fees</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-gray-800 dark:text-gray-300">Digital Logbook</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-gray-800 dark:text-gray-300">3 Days of Expert Instruction</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-gray-800 dark:text-gray-300">Confined & Open Water Dives</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-gray-800 dark:text-gray-300">Lunch and Refreshments</span>
+</li>
+</ul>
+</div>
+<div class="mt-10">
+<h2 class="text-gray-900 dark:text-white text-2xl font-bold leading-tight tracking-[-0.015em]">Prerequisites</h2>
+<ul class="mt-4 list-disc list-inside space-y-2 text-gray-800 dark:text-gray-300">
+<li>Minimum age: 10 years old.</li>
+<li>Adequate swimming skills and ability to float/tread water for 10 minutes.</li>
+<li>Good physical health (medical questionnaire required).</li>
+<li>No prior scuba diving experience necessary.</li>
+</ul>
+</div>
+</div>
+<div class="lg:col-span-1">
+<div class="sticky top-24">
+<div class="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-800/50 p-6 shadow-lg">
+<p class="text-4xl font-black text-gray-900 dark:text-white">$350 <span class="text-base font-normal text-gray-500 dark:text-gray-400">/person</span></p>
+<div class="mt-6 space-y-4">
+<div class="flex items-center justify-between text-sm">
+<span class="font-bold text-gray-600 dark:text-gray-300">Duration:</span>
+<span class="text-gray-800 dark:text-gray-300">3 Days</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<span class="font-bold text-gray-600 dark:text-gray-300">Difficulty:</span>
+<span class="text-gray-800 dark:text-gray-300">Beginner</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<span class="font-bold text-gray-600 dark:text-gray-300">Location:</span>
+<span class="text-gray-800 dark:text-gray-300">Marine Bay</span>
+</div>
+</div>
+<button class="mt-8 flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-primary hover:bg-primary/90 text-white text-base font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Add to Cart</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-gray-100 dark:bg-background-dark/50 py-12 md:py-20">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<h2 class="text-center text-gray-900 dark:text-white text-3xl font-bold leading-tight tracking-[-0.015em]">Course Gallery</h2>
+<p class="text-center mt-2 text-gray-800 dark:text-gray-300">See what your adventure could look like.</p>
+<div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="overflow-hidden rounded-lg aspect-w-1 aspect-h-1"><img class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" data-alt="A student practices scuba skills in a pool with an instructor." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcptYUEzsuyjLAcHt3o5-au5aBg3JhcLk_xlMDYHimJ857yF28jwCnwAYmX1UC1wyTggAbl2PIi5ctBHSLBQ2BxQlDV18LdxImU8qtctRA1tXW909-IaCF7awKCMFgPFQNR8MS0pKbO5Xt1fSF652_9Ce-sYpdRuOznUoMXyoCa3ktQ1LEO8tobX9uRBF5xmGz_xWuCLP1_KerifW5qNf_w1ewAGFOUrf5axcK48bddn2nvkN0uXdk2OQO84URkeSME4euy5EUJdzh"/></div>
+<div class="overflow-hidden rounded-lg aspect-w-1 aspect-h-1"><img class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" data-alt="A group of divers exploring a coral reef." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAdnRNxQeX8ACVduybeoIXbYypKiPrVStybgub0FHICnLAK4tMs31YrtkjFXaCJXwjLH2BstjQUSkOk1jJmaqi4eBJLqoEQka3i2XjTWlnv3DEKv2y13Lg_e8AT4c7f0yJx5BHU1Z-MqNr04DzjIXc-RPiFNuPD_tkBEg89kKhcjMys-lsrtpGOn8Ir5gBsEtKxBEaeQxO7HEgm3NzOg87XM2f_Ymz3-7HvqmxkeLmvtpK4HeLCxBZob-BUI83V7odZ6QQn6RoO5qK"/></div>
+<div class="overflow-hidden rounded-lg aspect-w-1 aspect-h-1"><img class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" data-alt="A close-up shot of a sea turtle swimming gracefully." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYXEXSY5Y1cpp4h4k5sI4DW2GJWZfM8HEuk1eorY04YPM9jmebPjtofyAg1idnU2gTNUV_mhP6RDNxDm_GIQbrUfp56dTg4EpjRpDwb7yfHpvauA0Tcwt4Vq_sRzyHJSWPX6KZOnQpnx5AAaw8RBTsjdYKc0tE_nc0g8utCyIxnT1yFmWelvZ_SMnl3TUZZJB33nO_5dtRs4B_yMieoKFix7iu9YM-SG2XkWMJvJxhKgROVpxH5zRJjyM4bCjfDNjmGIslO5BcMYiI"/></div>
+<div class="overflow-hidden rounded-lg aspect-w-1 aspect-h-1"><img class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" data-alt="A newly certified diver proudly holding their PADI certification card." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMuIsVdPoQNk9JGyrt_9s9EV8QfE_iNaO5PoPUHtHsw-B3PfMCCzIptWY9QBZbzAzcO8fnEKPrWTqwvHp6kd4xhGH8d67JDdTGlWxQiIYTzaA6kQvkHcXBD5Anb55tW6MUMQUu6XJFuOBHDs02G6wsvLrg2Z9keYgJSWADEU5F37NdJttlBmslZwv8UAGEeLsOeF8Ajk5VJ7N8SBvjQ1HVt9SXlRVUKpD5uPiUp71c77iCdsOJAZL1kCcHqAlQzfk0HIVbIV2UZJde"/></div>
+</div>
+</div>
+</div>
+<div class="py-12 md:py-20">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<h2 class="text-center text-gray-900 dark:text-white text-3xl font-bold leading-tight tracking-[-0.015em]">Reviews from Our Divers</h2>
+<div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="bg-white dark:bg-gray-800/50 border border-gray-200 dark:border-gray-800 rounded-lg p-6 flex flex-col">
+<div class="flex items-center text-primary mb-2">
+<span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span>
+</div>
+<p class="text-gray-800 dark:text-gray-300 flex-grow">"An absolutely unforgettable experience! The instructors were patient, knowledgeable, and made me feel safe the entire time. I went from being a complete novice to a confident diver. Highly recommend!"</p>
+<p class="font-bold text-gray-900 dark:text-white mt-4">- Sarah L.</p>
+</div>
+<div class="bg-white dark:bg-gray-800/50 border border-gray-200 dark:border-gray-800 rounded-lg p-6 flex flex-col">
+<div class="flex items-center text-primary mb-2">
+<span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span>
+</div>
+<p class="text-gray-800 dark:text-gray-300 flex-grow">"The best decision I made on my vacation. The team is professional and the dive sites are stunning. I saw so much marine life. I'm already planning my Advanced Open Water course with them."</p>
+<p class="font-bold text-gray-900 dark:text-white mt-4">- Michael B.</p>
+</div>
+<div class="bg-white dark:bg-gray-800/50 border border-gray-200 dark:border-gray-800 rounded-lg p-6 flex flex-col">
+<div class="flex items-center text-primary mb-2">
+<span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span>
+</div>
+<p class="text-gray-800 dark:text-gray-300 flex-grow">"From start to finish, the process was seamless. The equipment was top-notch, and the small group sizes meant we got a lot of personal attention. A truly five-star operation."</p>
+<p class="font-bold text-gray-900 dark:text-white mt-4">- Emily C.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-gray-900 dark:bg-black/50 text-white">
+<div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+<div class="grid grid-cols-1 gap-8 md:grid-cols-4">
+<div class="md:col-span-1">
+<div class="flex items-center gap-2">
+<div class="text-primary text-2xl">
+<span class="material-symbols-outlined">scuba_diving</span>
+</div>
+<h2 class="text-lg font-bold">AquaSense</h2>
+</div>
+<p class="mt-4 text-sm text-gray-400">Explore the world beneath the waves with us. Your adventure starts here.</p>
+</div>
+<div>
+<h3 class="font-semibold tracking-wider text-gray-200">Quick Links</h3>
+<ul class="mt-4 space-y-2">
+<li><a class="text-sm text-gray-400 hover:text-white" href="#">Home</a></li>
+<li><a class="text-sm text-gray-400 hover:text-white" href="#">Courses</a></li>
+<li><a class="text-sm text-gray-400 hover:text-white" href="#">About Us</a></li>
+<li><a class="text-sm text-gray-400 hover:text-white" href="#">Contact</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-semibold tracking-wider text-gray-200">Contact Us</h3>
+<ul class="mt-4 space-y-2 text-sm text-gray-400">
+<li class="flex items-start"><span class="material-symbols-outlined mr-2 text-base">location_on</span>123 Ocean Drive, Atlantis</li>
+<li class="flex items-start"><span class="material-symbols-outlined mr-2 text-base">call</span>(123) 456-7890</li>
+<li class="flex items-start"><span class="material-symbols-outlined mr-2 text-base">mail</span>info@divingexcursions.com</li>
+</ul>
+</div>
+<div>
+<h3 class="font-semibold tracking-wider text-gray-200">Follow Us</h3>
+<div class="mt-4 flex space-x-4">
+<a class="text-gray-400 hover:text-white" href="#"><svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewbox="0 0 24 24"><path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path></svg></a>
+<a class="text-gray-400 hover:text-white" href="#"><svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewbox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg></a>
+<a class="text-gray-400 hover:text-white" href="#"><svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewbox="0 0 24 24"><path clip-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.013-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465 2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.345 2.525c.636-.247 1.363.416 2.427.465C9.795 2.013 10.148 2 12.315 2zm-2.013 6.067a3.931 3.931 0 100 7.862 3.931 3.931 0 000-7.862zM6.666 12a5.333 5.333 0 1110.666 0 5.333 5.333 0 01-10.666 0zM16.95 6.518a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z" fill-rule="evenodd"></path></svg></a>
+</div>
+</div>
+</div>
+<div class="mt-8 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
+<p>© 2025 AquaSense. All Rights Reserved.</p>
+</div>
+</div>
+</footer>
+</div>
+</body></html>
