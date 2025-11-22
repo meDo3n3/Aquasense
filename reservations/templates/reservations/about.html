@@ -5,7 +5,9 @@
 
 {% block content %}
 <div class="relative w-full h-[40vh] flex items-center justify-center text-white">
-    <div class="absolute inset-0 bg-cover bg-center" style='background-image: url("{% static 'reservations/images/about_us.jpg' %}");' data-alt="Team of divers on a boat"></div>
+    <div class="absolute inset-0 bg-cover bg-center"
+        style='background-image: url("https://res.cloudinary.com/dp2ov37tr/image/upload/v1763854351/aquasense/aquasense/about_us.png");'
+        data-alt="Team of divers on a boat"></div>
     <div class="absolute inset-0 bg-black/50"></div>
     <div class="relative z-10 text-center px-4">
         <h1 class="text-4xl font-black tracking-tight md:text-6xl">About AquaSense</h1>
@@ -35,10 +37,12 @@
             </p>
         </div>
         <div class="grid grid-cols-2 gap-4">
-            <img class="rounded-xl shadow-lg w-full h-64 object-cover"
-                src="{% static 'reservations/images/details_1.jpg' %}" alt="Instructor teaching student">
-            <img class="rounded-xl shadow-lg w-full h-64 object-cover mt-8"
-                src="{% static 'reservations/images/details_2.jpg' %}" alt="Group dive">
+            <img class="rounded-xl shadow-lg w-full h-64 object-cover" loading="lazy"
+                src="https://res.cloudinary.com/dp2ov37tr/image/upload/v1763854356/aquasense/aquasense/details_1.png"
+                alt="Instructor teaching student">
+            <img class="rounded-xl shadow-lg w-full h-64 object-cover mt-8" loading="lazy"
+                src="https://res.cloudinary.com/dp2ov37tr/image/upload/v1763854358/aquasense/aquasense/details_2.png"
+                alt="Group dive">
         </div>
     </div>
 
