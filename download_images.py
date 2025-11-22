@@ -1,0 +1,32 @@
+import os
+import requests
+
+images = {
+    "hero_bg.jpg": "https://lh3.googleusercontent.com/aida-public/AB6AXuCKGYeHTfN0YbTIRP-VAutTHvLMwOSEDtTEttCDF4xJmB1C1f1M80wrQYNplnN2q2-XOddprnsbvUgLFMZ7XUp5aMsZ-mI_9ePCktIQ1oKMuYaViFTDaK8zRx-pTgRL23iB6ZR46RMJT_tCpy3plL2wShKhlJECL6OOOa_E-4ebCPIpAWxSEJtA9aRIiLloHBjPvQO5mD273nNR3G38aKGpvuJcQrmDD9Ecul4FkjfeujiMvbrvZvQiGCgOf8hBRqs1ZEY6f3EoQBOE",
+    "open_water.jpg": "https://lh3.googleusercontent.com/aida-public/AB6AXuDMElt3GPMVEQL1nAF-NgYTJHJOKY5Kqw-ATxTxjjCtjULDSbt6JMzss4oSo1BsHmDqIB3H_h5qzV8QnauBg4z78YKDmNFb9J8sdRfUsfQNn5uamtrQ995AGtzZOFD5bevr4WY--G0mKNTUPcNaMm2yxvGKXuLG1c0JHiFYsVKTcYdjF3YBaEqm1noUqkI2KdQA8gmDzoAl9ebVrBaGOecYlpzg_UeI9oC7gLcpqFta9BgQ8Z-qB8cN8WSy8qvlt5jFOX93eUzsehZU",
+    "advanced_skills.jpg": "https://lh3.googleusercontent.com/aida-public/AB6AXuDd3XyY0PILImLOgqWm6kEm7FPWpEmuRKhcHj6wtIMdlhiJloo-X72EO3ttuITasddxGqaUMn3xzC6-H2d9lj2ocd13O9mIKLxQ0qQ3GF-zVuO0gZqOzv65qfEm7XnfxN0ZPjMmp7_rdL7XZeFXtP5rNp2TW7SJNHjBbb65bklAckW249hwOWUf-hMBPshrITKEDBu3SuQSaf8dZacnEwruFjmrSKltiQmKNyLZ1lHIDDEltMs2roL-W7ZKKeokH_uYxa4UGcjQMeyM",
+    "coral_reef.jpg": "https://lh3.googleusercontent.com/aida-public/AB6AXuDaieikoGEJ3ZVDukVuznNReUgD4g5PAzYB96Th-a0dTfCVTnpAuFiAtgFlUuj9SiQMQRt4KyWOvp2O1xmHshPoQk-FuW4Kcq-BuP-ms8fCljYESzOFaPj0pu0e0c62O1PLGlHjX7Bx89qxD7vsdhdHl2gyTXQjcQ4hZcmCAu5KkK_i2WbTPZ4lJbgdWBmZHUPw5r0SKWh9G8fBkKM8ugr63Rz3QULMfkDg2FbGyOW3T6zRfWG0XbpNZjC87suidFLPCnfe316X8Exo",
+    "wreck_diving.jpg": "https://lh3.googleusercontent.com/aida-public/AB6AXuAJWpwBAHpczrRzUEnuXv2Ldfs62mWW6-zz8dRiNrgzW2m0q0MGxO35W-q7PVoxAtXlr5fzM-xg5tUxu55CGvTLrmoGwV3HEm0vLGWh_zFoccHh8kGPiZYYp7MT-l5Wwd_lAtj4aFR6Vv1ZdtZsljsxqD3c_bPEtt7vtpwIn7wO6WQcSz72jEX27tv0EOlKifXddm2aAzbIPsMMiSm4-GUcnZqRn8ox1ecvw0e1Rad9o42Lxu2H1LcpA7X9ZEcJZCdGxmI-q86CHBIr",
+    "about_us.jpg": "https://lh3.googleusercontent.com/aida-public/AB6AXuAgwbwHG1Jp9DqNJ2svuOfueYHvUvWS7V_whcqcwu_QllDkTalbqJeDTzl_y6ufpxXG8l6z2dP_EwAGaODZiFGDVPYTqaglNlBnpxseGCm3dncOIHqMNHAJglhRpPv1a2jK_Wt-RwkFfQ67RSvyzDZt-161YXxa77Uj0zR-bl7UTABFJXN9DtYaWknazwnpR8wR-d2VmviE75F7g7zB5kHY2YdVml45YZE0M3Md5nJAqLIaDjjqwcwmPtedvHZ1vmrWS3vWrWw1gTXY",
+    "whale_shark.jpg": "https://lh3.googleusercontent.com/aida-public/AB6AXuCGirtl9-21OFddNwAYonThXFE6y8lXaTcp5SLFmUx7GwBDWlucG53EjSzjnei_TNfWQWxwHbxpSwSUelmsy7UbQ3BQVuTRJJK89Xo3HrI4wsexX3lzj1hdB-9_tiiUtgAKZkTE9CSR2ra8f65PIu-i_r85vN1jbd-F6WcFIxu3MQ0Ywrm1ZQzOv6k7039pRwJoOn0CVVdgUXkFv2ZVsmp4M5e_jVFyGU3tQjuuanquy5Zx6RkAKDLx5VXzDqmKatBE6JsBF6v_WmRp",
+    "cenote.jpg": "https://lh3.googleusercontent.com/aida-public/AB6AXuDw-YbfcikEtlHItG_QPumqJPM-tqT6L16CYgT9UV1RxqUDwl2SjfgOrrrUGbsDwSGTufnlA4AI587g9CRfYqNegGFYVGUW4g1Z-IB9LVYaNw6XoCiJJgRcZ0JR1qCyStN538NLSLJwx3hwpI72o2ZWnQ_Oc7k6mHsDx5FPmODHgQz7ck8EB7aXoZQr5vrKGRxZsYHy-A0-y2ynK5BYimHVLlhBmvwKjK4duE5Zz_7DkqsTEDUak9QtT6CXLA1ZyH4LdpFN4p94DJcR",
+    "photography.jpg": "https://lh3.googleusercontent.com/aida-public/AB6AXuBoJsOUJN7shMHeizogQlVjCN4pop1JJahAiXInBM0YibmW9vGRfuiRIONyucLE6wNF97KuLVBTcZaICf-6-h2wGJhGry9HF7ytuO67rMvw9EWHGh1AiBGLBXmzJy7Ud-49bW8AFj-2yQY1qrNIsUD8qFYbcvlQaYIYWd_EiPQWdsFu4fBdNUhmhWnXg-cCHbgZWnh-eMClgVesXgenIW_KroZE9Eljg59m3Au5HDC-WYm_c6rL3MLEDrK5cskl-S0sQ2HIXTnq7rIJ",
+    "night_dive.jpg": "https://lh3.googleusercontent.com/aida-public/AB6AXuAZVipBp8N4r0dh8cq0yoDDJ6VaT9hCY7RIebgLtiByeI5c2PtET5gdUjGYWos_yowKX_JSSdngbRUqUEUv9tvLqGHWpQRn7J2iKSkvsvcRJMGNoBzdtrzdwruveNhQUCrV5XBYqeXk4DGLE2jiF_DwXjkOD8jw1U6tZVIn5HPeMcWMtoPjEclSCJGNsMwS3RTXNMcBS5csT7Ee4eeHYP13VAyit7M4f3kKetzW2WZ6JG07Vh6gkh5RRMjy2K-3jPH28tGfIzS3EcpR",
+    "details_1.jpg": "https://lh3.googleusercontent.com/aida-public/AB6AXuAcptYUEzsuyjLAcHt3o5-au5aBg3JhcLk_xlMDYHimJ857yF28jwCnwAYmX1UC1wyTggAbl2PIi5ctBHSLBQ2BxQlDV18LdxImU8qtctRA1tXW909-IaCF7awKCMFgPFQNR8MS0pKbO5Xt1fSF652_9Ce-sYpdRuOznUoMXyoCa3ktQ1LEO8tobX9uRBF5xmGz_xWuCLP1_KerifW5qNf_w1ewAGFOUrf5axcK48bddn2nvkN0uXdk2OQO84URkeSME4euy5EUJdzh",
+    "details_2.jpg": "https://lh3.googleusercontent.com/aida-public/AB6AXuBAdnRNxQeX8ACVduybeoIXbYypKiPrVStybgub0FHICnLAK4tMs31YrtkjFXaCJXwjLH2BstjQUSkOk1jJmaqi4eBJLqoEQka3i2XjTWlnv3DEKv2y13Lg_e8AT4c7f0yJx5BHU1Z-MqNr04DzjIXc-RPiFNuPD_tkBEg89kKhcjMys-lsrtpGOn8Ir5gBsEtKxBEaeQxO7HEgm3NzOg87XM2f_Ymz3-7HvqmxkeLmvtpK4HeLCxBZob-BUI83V7odZ6QQn6RoO5qK",
+    "details_3.jpg": "https://lh3.googleusercontent.com/aida-public/AB6AXuDYXEXSY5Y1cpp4h4k5sI4DW2GJWZfM8HEuk1eorY04YPM9jmebPjtofyAg1idnU2gTNUV_mhP6RDNxDm_GIQbrUfp56dTg4EpjRpDwb7yfHpvauA0Tcwt4Vq_sRzyHJSWPX6KZOnQpnx5AAaw8RBTsjdYKc0tE_nc0g8utCyIxnT1yFmWelvZ_SMnl3TUZZJB33nO_5dtRs4B_yMieoKFix7iu9YM-SG2XkWMJvJxhKgROVpxH5zRJjyM4bCjfDNjmGIslO5BcMYiI",
+    "details_4.jpg": "https://lh3.googleusercontent.com/aida-public/AB6AXuAMuIsVdPoQNk9JGyrt_9s9EV8QfE_iNaO5PoPUHtHsw-B3PfMCCzIptWY9QBZbzAzcO8fnEKPrWTqwvHp6kd4xhGH8d67JDdTGlWxQiIYTzaA6kQvkHcXBD5Anb55tW6MUMQUu6XJFuOBHDs02G6wsvLrg2Z9keYgJSWADEU5F37NdJttlBmslZwv8UAGEeLsOeF8Ajk5VJ7N8SBvjQ1HVt9SXlRVUKpD5uPiUp71c77iCdsOJAZL1kCcHqAlQzfk0HIVbIV2UZJde",
+    "checkout_thumb.jpg": "https://lh3.googleusercontent.com/aida-public/AB6AXuAPkDBzz19KVSBUSfE6Taa5HWS8Q8jG-ZQVf8dIlOfHpAj38-LYTCt4XRuvykQL-QJuOFZSICNHcHOOsprseKfemR0nX_qBru_y_VM0yaO3ZouhBIlaEZ2wQlWKMvX1ZNy_jMO4ZFZ3tFdtLBTSEnbO0Xkdw96zSuq3NcpbFBo4ru_xPBZ79Rc2ywyHcrQ2uw1xyTb08nLGGATY9lhZb7jMTa8EG6YWuYFOje4wQzC30jaLXnDc9FohlV8ESKoUygqPL4XkdYO2xIhT"
+}
+
+output_dir = "reservations/static/reservations/images"
+
+for filename, url in images.items():
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        with open(os.path.join(output_dir, filename), 'wb') as f:
+            f.write(response.content)
+        print(f"Downloaded {filename}")
+    except Exception as e:
+        print(f"Failed to download {filename}: {e}")

@@ -1,0 +1,176 @@
+{% extends 'reservations/base.html' %}
+{% load static %}
+
+{% block title %}Courses & Excursions - AquaSense{% endblock %}
+
+{% block content %}
+<div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+  <div class="mb-8">
+    <h1 class="text-center text-4xl font-black tracking-tighter text-gray-900 dark:text-white sm:text-5xl">Our Courses &
+      Excursions</h1>
+  </div>
+  <div class="mb-8 grid grid-cols-1 items-center gap-4 md:grid-cols-12 md:gap-6">
+    <div class="md:col-span-4 lg:col-span-5">
+      <label class="flex h-12 w-full flex-col">
+        <div class="flex h-full w-full flex-1 items-stretch rounded-lg bg-gray-200/60 dark:bg-gray-800/60">
+          <div class="flex items-center justify-center pl-4 text-gray-500 dark:text-gray-400">
+            <span class="material-symbols-outlined">search</span>
+          </div>
+          <input
+            class="w-full min-w-0 flex-1 resize-none overflow-hidden border-none bg-transparent px-2 text-base font-normal text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-0 dark:text-white dark:placeholder:text-gray-400"
+            placeholder="Search by name or location..." value="" />
+        </div>
+      </label>
+    </div>
+    <div class="md:col-span-5 lg:col-span-4">
+      <div class="flex h-12 flex-1 items-center justify-center rounded-lg bg-gray-200/60 p-1 dark:bg-gray-800/60">
+        <label
+          class="flex h-full grow cursor-pointer items-center justify-center overflow-hidden rounded-lg px-2 text-sm font-medium text-gray-500 has-[:checked]:bg-white has-[:checked]:text-gray-900 has-[:checked]:shadow-sm dark:text-gray-400 dark:has-[:checked]:bg-gray-700 dark:has-[:checked]:text-white">
+          <span class="truncate">All</span>
+          <input checked="" class="invisible w-0" name="filter-toggle" type="radio" value="All" />
+        </label>
+        <label
+          class="flex h-full grow cursor-pointer items-center justify-center overflow-hidden rounded-lg px-2 text-sm font-medium text-gray-500 has-[:checked]:bg-white has-[:checked]:text-gray-900 has-[:checked]:shadow-sm dark:text-gray-400 dark:has-[:checked]:bg-gray-700 dark:has-[:checked]:text-white">
+          <span class="truncate">Courses</span>
+          <input class="invisible w-0" name="filter-toggle" type="radio" value="Courses" />
+        </label>
+        <label
+          class="flex h-full grow cursor-pointer items-center justify-center overflow-hidden rounded-lg px-2 text-sm font-medium text-gray-500 has-[:checked]:bg-white has-[:checked]:text-gray-900 has-[:checked]:shadow-sm dark:text-gray-400 dark:has-[:checked]:bg-gray-700 dark:has-[:checked]:text-white">
+          <span class="truncate">Excursions</span>
+          <input class="invisible w-0" name="filter-toggle" type="radio" value="Excursions" />
+        </label>
+      </div>
+    </div>
+    <div class="md:col-span-3 lg:col-span-3">
+      <div class="relative h-12 w-full">
+        <select
+          class="h-full w-full appearance-none rounded-lg border-none bg-gray-200/60 pl-4 pr-10 text-sm font-medium text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary/50 dark:bg-gray-800/60 dark:text-white">
+          <option>Sort by: Popularity</option>
+          <option>Sort by: Price (Low to High)</option>
+          <option>Sort by: Price (High to Low)</option>
+        </select>
+        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+          <span class="material-symbols-outlined text-gray-500 dark:text-gray-400">expand_more</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    <a href="{% url 'details' %}"
+      class="group flex flex-col overflow-hidden rounded-xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:bg-gray-800">
+      <img class="h-48 w-full object-cover"
+        data-alt="A scuba diver swimming gracefully near a vibrant coral reef teeming with colorful fish."
+        src="{% static 'reservations/images/open_water.jpg' %}" />
+      <div class="flex flex-1 flex-col p-5">
+        <h3 class="text-lg font-bold text-gray-900 dark:text-white">Open Water Diver Certification</h3>
+        <p class="mt-2 flex-grow text-sm text-gray-600 dark:text-gray-300">Your first step into the underwater world.
+          Get certified to dive anywhere!</p>
+        <p class="mt-4 text-xl font-black text-primary">$499</p>
+      </div>
+    </a>
+    <a href="{% url 'details' %}"
+      class="group flex flex-col overflow-hidden rounded-xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:bg-gray-800">
+      <img class="h-48 w-full object-cover"
+        data-alt="A majestic whale shark glides through the deep blue ocean, surrounded by smaller fish."
+        src="{% static 'reservations/images/whale_shark.jpg' %}" />
+      <div class="flex flex-1 flex-col p-5">
+        <h3 class="text-lg font-bold text-gray-900 dark:text-white">Whale Shark Encounter</h3>
+        <p class="mt-2 flex-grow text-sm text-gray-600 dark:text-gray-300">A once-in-a-lifetime chance to swim alongside
+          the gentle giants of the ocean.</p>
+        <p class="mt-4 text-xl font-black text-primary">$250</p>
+      </div>
+    </a>
+    <a href="{% url 'details' %}"
+      class="group flex flex-col overflow-hidden rounded-xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:bg-gray-800">
+      <img class="h-48 w-full object-cover"
+        data-alt="The dark, mysterious entrance to an underwater cave, with light filtering in from the opening."
+        src="{% static 'reservations/images/cenote.jpg' %}" />
+      <div class="flex flex-1 flex-col p-5">
+        <h3 class="text-lg font-bold text-gray-900 dark:text-white">Cenote Cavern Dive</h3>
+        <p class="mt-2 flex-grow text-sm text-gray-600 dark:text-gray-300">Explore the breathtaking underwater cave
+          systems of the Yucatan Peninsula.</p>
+        <p class="mt-4 text-xl font-black text-primary">$180</p>
+      </div>
+    </a>
+    <a href="{% url 'details' %}"
+      class="group flex flex-col overflow-hidden rounded-xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:bg-gray-800">
+      <img class="h-48 w-full object-cover" data-alt="A school of reef sharks swimming over a sandy ocean floor."
+        src="{% static 'reservations/images/coral_reef.jpg' %}" />
+      <div class="flex flex-1 flex-col p-5">
+        <h3 class="text-lg font-bold text-gray-900 dark:text-white">Reef Shark Exploration</h3>
+        <p class="mt-2 flex-grow text-sm text-gray-600 dark:text-gray-300">Observe magnificent reef sharks in their
+          natural habitat. A thrilling adventure.</p>
+        <p class="mt-4 text-xl font-black text-primary">$220</p>
+      </div>
+    </a>
+    <a href="{% url 'details' %}"
+      class="group flex flex-col overflow-hidden rounded-xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:bg-gray-800">
+      <img class="h-48 w-full object-cover" data-alt="A diver taking underwater photographs of a sea turtle."
+        src="{% static 'reservations/images/photography.jpg' %}" />
+      <div class="flex flex-1 flex-col p-5">
+        <h3 class="text-lg font-bold text-gray-900 dark:text-white">Underwater Photography Course</h3>
+        <p class="mt-2 flex-grow text-sm text-gray-600 dark:text-gray-300">Learn the art of capturing stunning images
+          beneath the waves.</p>
+        <p class="mt-4 text-xl font-black text-primary">$350</p>
+      </div>
+    </a>
+    <a href="{% url 'details' %}"
+      class="group flex flex-col overflow-hidden rounded-xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:bg-gray-800">
+      <img class="h-48 w-full object-cover"
+        data-alt="The rusted hull of a sunken shipwreck, now an artificial reef covered in coral."
+        src="{% static 'reservations/images/wreck_diving.jpg' %}" />
+      <div class="flex flex-1 flex-col p-5">
+        <h3 class="text-lg font-bold text-gray-900 dark:text-white">Advanced Wreck Diving</h3>
+        <p class="mt-2 flex-grow text-sm text-gray-600 dark:text-gray-300">Explore historic shipwrecks and learn
+          advanced penetration techniques.</p>
+        <p class="mt-4 text-xl font-black text-primary">$450</p>
+      </div>
+    </a>
+    <a href="{% url 'details' %}"
+      class="group flex flex-col overflow-hidden rounded-xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:bg-gray-800">
+      <img class="h-48 w-full object-cover"
+        data-alt="A vibrant night dive scene with a diver's torch illuminating fluorescent corals."
+        src="{% static 'reservations/images/night_dive.jpg' %}" />
+      <div class="flex flex-1 flex-col p-5">
+        <h3 class="text-lg font-bold text-gray-900 dark:text-white">Night Dive Adventure</h3>
+        <p class="mt-2 flex-grow text-sm text-gray-600 dark:text-gray-300">Witness the reef come alive after dark. See
+          nocturnal creatures in action.</p>
+        <p class="mt-4 text-xl font-black text-primary">$150</p>
+      </div>
+    </a>
+    <a href="{% url 'details' %}"
+      class="group flex flex-col overflow-hidden rounded-xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:bg-gray-800">
+      <img class="h-48 w-full object-cover"
+        data-alt="A certified rescue diver practicing skills with another diver in open water."
+        src="{% static 'reservations/images/advanced_skills.jpg' %}" />
+      <div class="flex flex-1 flex-col p-5">
+        <h3 class="text-lg font-bold text-gray-900 dark:text-white">Rescue Diver Course</h3>
+        <p class="mt-2 flex-grow text-sm text-gray-600 dark:text-gray-300">The most challenging, yet most rewarding
+          course for any diver. Learn to help others.</p>
+        <p class="mt-4 text-xl font-black text-primary">$550</p>
+      </div>
+    </a>
+  </div>
+  <div class="mt-12 flex justify-center">
+    <nav aria-label="Pagination" class="inline-flex items-center space-x-2 rounded-lg">
+      <a class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-gray-500 hover:bg-gray-200/80 dark:text-gray-400 dark:hover:bg-gray-700/80"
+        href="#">
+        <span class="material-symbols-outlined text-xl">chevron_left</span>
+      </a>
+      <a class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-sm font-medium text-white"
+        href="#">1</a>
+      <a class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-200/80 dark:text-gray-300 dark:hover:bg-gray-700/80"
+        href="#">2</a>
+      <a class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-200/80 dark:text-gray-300 dark:hover:bg-gray-700/80"
+        href="#">3</a>
+      <span class="inline-flex h-10 w-10 items-center justify-center text-sm font-medium text-gray-500">...</span>
+      <a class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-200/80 dark:text-gray-300 dark:hover:bg-gray-700/80"
+        href="#">8</a>
+      <a class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-gray-500 hover:bg-gray-200/80 dark:text-gray-400 dark:hover:bg-gray-700/80"
+        href="#">
+        <span class="material-symbols-outlined text-xl">chevron_right</span>
+      </a>
+    </nav>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends 'reservations/base.html' %}
+{% load static %}
+
+{% block title %}About Us - AquaSense{% endblock %}
+
+{% block content %}
+<div class="relative w-full h-[40vh] flex items-center justify-center text-white">
+    <div class="absolute inset-0 bg-cover bg-center" style='background-image: url("{% static 'reservations/images/about_us.jpg' %}");' data-alt="Team of divers on a boat"></div>
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative z-10 text-center px-4">
+        <h1 class="text-4xl font-black tracking-tight md:text-6xl">About AquaSense</h1>
+        <p class="mt-4 text-lg md:text-xl max-w-2xl mx-auto text-gray-200">Passionate about the ocean, dedicated to your
+            safety and enjoyment.</p>
+    </div>
+</div>
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">Our Story</h2>
+            <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                Founded in 2010, AquaSense began as a small group of friends who shared a deep love for the ocean. We
+                wanted to create a diving center that wasn't just about certifications, but about creating a community
+                of ocean stewards.
+            </p>
+            <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                Over the years, we've grown into a premier diving destination, but our core values remain the same:
+                safety, conservation, and fun. We believe that everyone should have the opportunity to experience the
+                magic of the underwater world.
+            </p>
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                Our team of PADI-certified instructors brings decades of combined experience to every dive. Whether
+                you're taking your first breath underwater or you're a seasoned pro, we're here to make your experience
+                unforgettable.
+            </p>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+            <img class="rounded-xl shadow-lg w-full h-64 object-cover"
+                src="{% static 'reservations/images/details_1.jpg' %}" alt="Instructor teaching student">
+            <img class="rounded-xl shadow-lg w-full h-64 object-cover mt-8"
+                src="{% static 'reservations/images/details_2.jpg' %}" alt="Group dive">
+        </div>
+    </div>
+
+    <div class="mt-24">
+        <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">Why Choose Us?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div
+                class="text-center p-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+                <div
+                    class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 text-primary">
+                    <span class="material-symbols-outlined text-3xl">safety_check</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Safety First</h3>
+                <p class="text-gray-600 dark:text-gray-300">We adhere to the strictest safety standards and maintain our
+                    equipment to the highest level.</p>
+            </div>
+            <div
+                class="text-center p-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+                <div
+                    class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 text-primary">
+                    <span class="material-symbols-outlined text-3xl">eco</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Eco-Conscious</h3>
+                <p class="text-gray-600 dark:text-gray-300">We are committed to protecting our oceans and practice
+                    sustainable diving techniques.</p>
+            </div>
+            <div
+                class="text-center p-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+                <div
+                    class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 text-primary">
+                    <span class="material-symbols-outlined text-3xl">groups</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Small Groups</h3>
+                <p class="text-gray-600 dark:text-gray-300">We keep our groups small to ensure personalized attention
+                    and a better experience.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,254 @@
+{% extends 'reservations/base.html' %}
+{% load static %}
+
+{% block title %}Booking & Checkout - AquaSense{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div class="mb-8">
+    <div class="flex flex-wrap gap-2 text-sm text-gray-500 dark:text-gray-400 mb-2">
+      <a class="hover:text-primary" href="{% url 'home' %}">Home</a>
+      <span>/</span>
+      <a class="hover:text-primary" href="{% url 'courses' %}">Excursions</a>
+      <span>/</span>
+      <span class="text-gray-800 dark:text-gray-200 font-medium">Booking</span>
+    </div>
+    <h1 class="text-4xl font-bold tracking-tighter text-gray-900 dark:text-white">Booking & Checkout</h1>
+  </div>
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+    <div class="lg:col-span-2 space-y-8">
+      <div class="bg-white dark:bg-gray-800/50 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">1. Your Information</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <label class="flex flex-col">
+            <p class="text-sm font-medium text-gray-700 dark:text-gray-300 pb-2">Full Name</p>
+            <input
+              class="form-input flex w-full rounded-lg text-gray-900 dark:text-gray-100 focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 h-12 px-4 placeholder:text-gray-400 dark:placeholder:text-gray-500"
+              placeholder="Enter your full name" type="text" value="" />
+          </label>
+          <label class="flex flex-col">
+            <p class="text-sm font-medium text-gray-700 dark:text-gray-300 pb-2">Email Address</p>
+            <input
+              class="form-input flex w-full rounded-lg text-gray-900 dark:text-gray-100 focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 h-12 px-4 placeholder:text-gray-400 dark:placeholder:text-gray-500"
+              placeholder="you@example.com" type="email" value="" />
+          </label>
+          <label class="flex flex-col">
+            <p class="text-sm font-medium text-gray-700 dark:text-gray-300 pb-2">Phone Number</p>
+            <input
+              class="form-input flex w-full rounded-lg text-gray-900 dark:text-gray-100 focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 h-12 px-4 placeholder:text-gray-400 dark:placeholder:text-gray-500"
+              placeholder="+1 (555) 000-0000" type="tel" value="" />
+          </label>
+          <label class="flex flex-col">
+            <p class="text-sm font-medium text-gray-700 dark:text-gray-300 pb-2">Number of Divers</p>
+            <input
+              class="form-input flex w-full rounded-lg text-gray-900 dark:text-gray-100 focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 h-12 px-4 placeholder:text-gray-400 dark:placeholder:text-gray-500"
+              type="number" value="2" />
+          </label>
+        </div>
+      </div>
+      <div class="bg-white dark:bg-gray-800/50 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">2. Schedule Your Dive</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="w-full">
+            <div class="flex items-center justify-between mb-4">
+              <button class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700"><span
+                  class="material-symbols-outlined text-base">chevron_left</span></button>
+              <p class="font-semibold text-gray-900 dark:text-white">December 2024</p>
+              <button class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700"><span
+                  class="material-symbols-outlined text-base">chevron_right</span></button>
+            </div>
+            <div class="grid grid-cols-7 gap-1 text-center text-sm">
+              <div class="text-gray-500 dark:text-gray-400">Su</div>
+              <div class="text-gray-500 dark:text-gray-400">Mo</div>
+              <div class="text-gray-500 dark:text-gray-400">Tu</div>
+              <div class="text-gray-500 dark:text-gray-400">We</div>
+              <div class="text-gray-500 dark:text-gray-400">Th</div>
+              <div class="text-gray-500 dark:text-gray-400">Fr</div>
+              <div class="text-gray-500 dark:text-gray-400">Sa</div>
+              <div
+                class="font-medium h-9 w-9 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
+                1</div>
+              <div
+                class="font-medium h-9 w-9 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
+                2</div>
+              <div
+                class="font-medium h-9 w-9 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
+                3</div>
+              <div
+                class="font-medium h-9 w-9 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
+                4</div>
+              <div
+                class="font-medium h-9 w-9 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
+                5</div>
+              <div
+                class="font-medium h-9 w-9 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
+                6</div>
+              <div
+                class="font-medium h-9 w-9 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
+                7</div>
+              <div
+                class="font-medium h-9 w-9 flex items-center justify-center rounded-full cursor-pointer bg-primary text-white">
+                8</div>
+              <div
+                class="font-medium h-9 w-9 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
+                9</div>
+              <div
+                class="font-medium h-9 w-9 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
+                10</div>
+              <div
+                class="font-medium h-9 w-9 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
+                11</div>
+              <div
+                class="font-medium h-9 w-9 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
+                12</div>
+              <div
+                class="font-medium h-9 w-9 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
+                13</div>
+              <div
+                class="font-medium h-9 w-9 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
+                14</div>
+              <div
+                class="font-medium h-9 w-9 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
+                15</div>
+              <div
+                class="font-medium h-9 w-9 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
+                16</div>
+              <div
+                class="font-medium h-9 w-9 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
+                17</div>
+              <div
+                class="font-medium h-9 w-9 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
+                18</div>
+              <div
+                class="font-medium h-9 w-9 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
+                19</div>
+              <div
+                class="font-medium h-9 w-9 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
+                20</div>
+              <div
+                class="font-medium h-9 w-9 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
+                21</div>
+              <div
+                class="font-medium h-9 w-9 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
+                22</div>
+              <div
+                class="font-medium h-9 w-9 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
+                23</div>
+              <div
+                class="font-medium h-9 w-9 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
+                24</div>
+              <div
+                class="font-medium h-9 w-9 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
+                25</div>
+              <div
+                class="font-medium h-9 w-9 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
+                26</div>
+              <div
+                class="font-medium h-9 w-9 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
+                27</div>
+              <div
+                class="font-medium h-9 w-9 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
+                28</div>
+              <div
+                class="font-medium h-9 w-9 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
+                29</div>
+              <div
+                class="font-medium h-9 w-9 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
+                30</div>
+              <div
+                class="font-medium h-9 w-9 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
+                31</div>
+            </div>
+          </div>
+          <div class="w-full space-y-4">
+            <p class="font-semibold text-gray-900 dark:text-white">Select a Time</p>
+            <div class="space-y-3">
+              <button
+                class="w-full text-center py-3 px-4 border border-gray-300 dark:border-gray-600 rounded-lg hover:border-primary dark:hover:border-primary text-gray-700 dark:text-gray-300">9:00
+                AM</button>
+              <button
+                class="w-full text-center py-3 px-4 border border-primary bg-primary/20 rounded-lg text-primary font-semibold">1:00
+                PM</button>
+              <button
+                class="w-full text-center py-3 px-4 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-400 dark:text-gray-500 cursor-not-allowed"
+                disabled="">4:00 PM (Full)</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white dark:bg-gray-800/50 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">3. AI Dive Advisor - Safety Check</h2>
+        <p class="text-gray-600 dark:text-gray-400 mb-6">Please answer a few questions to ensure your safety.</p>
+        <div class="space-y-6">
+          <label class="flex flex-col">
+            <p class="text-sm font-medium text-gray-700 dark:text-gray-300 pb-2">What is your certification level?</p>
+            <select
+              class="form-select flex w-full rounded-lg text-gray-900 dark:text-gray-100 focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 h-12 px-3">
+              <option>Open Water Diver</option>
+              <option>Advanced Open Water Diver</option>
+              <option>Rescue Diver</option>
+              <option>Divemaster</option>
+              <option>No Certification</option>
+            </select>
+          </label>
+          <div class="flex items-center">
+            <input
+              class="form-checkbox h-4 w-4 rounded text-primary focus:ring-primary/50 border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700"
+              id="health-check" type="checkbox" />
+            <label class="ml-3 text-sm text-gray-700 dark:text-gray-300" for="health-check">I confirm I have no medical
+              conditions that would prevent me from diving.</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="lg:col-span-1">
+      <div class="sticky top-24 space-y-6">
+        <div class="bg-white dark:bg-gray-800/50 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Order Summary</h3>
+          <div class="flex items-center space-x-4 mb-6">
+            <img class="h-24 w-24 rounded-lg object-cover" data-alt="Vibrant coral reef with a school of yellow fish"
+              src="{% static 'reservations/images/checkout_thumb.jpg' %}" />
+            <div>
+              <h4 class="font-semibold text-gray-900 dark:text-white">Coral Gardens Discovery Dive</h4>
+              <p class="text-sm text-gray-500 dark:text-gray-400">PADI Certified Course</p>
+            </div>
+          </div>
+          <div class="space-y-3 text-sm text-gray-600 dark:text-gray-300">
+            <div class="flex justify-between">
+              <span>Date:</span>
+              <span class="font-medium text-gray-900 dark:text-white">Dec 8, 2024</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Time:</span>
+              <span class="font-medium text-gray-900 dark:text-white">1:00 PM</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Divers:</span>
+              <span class="font-medium text-gray-900 dark:text-white">2</span>
+            </div>
+          </div>
+          <hr class="my-6 border-gray-200 dark:border-gray-700" />
+          <div class="space-y-3 text-sm">
+            <div class="flex justify-between text-gray-600 dark:text-gray-300">
+              <span>Subtotal</span>
+              <span>$300.00</span>
+            </div>
+            <div class="flex justify-between text-gray-600 dark:text-gray-300">
+              <span>Taxes & Fees</span>
+              <span>$24.00</span>
+            </div>
+            <div class="flex justify-between text-lg font-bold text-gray-900 dark:text-white">
+              <span>Total</span>
+              <span>$324.00</span>
+            </div>
+          </div>
+          <button
+            class="w-full mt-6 bg-primary text-white font-bold py-3 rounded-lg hover:bg-primary/90 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary/50 dark:focus:ring-offset-background-dark">
+            CONFIRM & BOOK NOW
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

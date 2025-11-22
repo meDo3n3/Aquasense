@@ -1,0 +1,427 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>{% block title %}AquaSense - Explore the Underwater World{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0a64ff",
+                        "background-light": "#f5f6f8",
+                        "background-dark": "#0f1623",
+                        "ocean-deep": "#0A2463",
+                        "ocean-dark": "#001B48",
+                        "accent-cyan": "#24D4E9",
+                        "accent-teal": "#00A9B5",
+                        "accent-coral": "#FFC971",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* === CSS code for the Chat Window scrollbar === */
+        #ai-chat-messages::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #ai-chat-messages::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        #ai-chat-messages::-webkit-scrollbar-thumb {
+            background-color: #0a64ff;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body class="font-display bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200">
+    <div class="relative w-full flex flex-col group/design-root overflow-x-hidden">
+        {% block header %}
+        <header
+            class="sticky top-0 z-50 flex w-full justify-center border-b border-gray-200/80 bg-background-light/80 dark:border-gray-700/80 dark:bg-background-dark/80 backdrop-blur-sm">
+            <div class="flex w-full max-w-7xl items-center justify-between whitespace-nowrap px-4 sm:px-6 lg:px-8 py-3">
+                <div class="flex items-center gap-4 text-gray-900 dark:text-white">
+                    <div class="text-primary text-2xl">
+                        <span class="material-symbols-outlined">scuba_diving</span>
+                    </div>
+                    <h2 class="text-lg font-bold tracking-tight">AquaSense</h2>
+                </div>
+                <div class="hidden items-center gap-8 md:flex">
+                    <a class="text-sm font-medium {% if request.resolver_match.url_name == 'home' %}text-primary{% else %}text-gray-700 hover:text-primary dark:text-gray-300 dark:hover:text-primary{% endif %}"
+                        href="{% url 'home' %}">Home</a>
+                    <a class="text-sm font-medium {% if request.resolver_match.url_name == 'courses' %}text-primary{% else %}text-gray-700 hover:text-primary dark:text-gray-300 dark:hover:text-primary{% endif %}"
+                        href="{% url 'courses' %}">Courses</a>
+                    <a class="text-sm font-medium {% if request.resolver_match.url_name == 'about' %}text-primary{% else %}text-gray-700 hover:text-primary dark:text-gray-300 dark:hover:text-primary{% endif %}"
+                        href="{% url 'about' %}">About</a>
+                    <a class="text-sm font-medium {% if request.resolver_match.url_name == 'contact' %}text-primary{% else %}text-gray-700 hover:text-primary dark:text-gray-300 dark:hover:text-primary{% endif %}"
+                        href="{% url 'contact' %}">Contact</a>
+                </div>
+                <div class="flex items-center gap-2 sm:gap-4">
+                    {% if user.is_authenticated %}
+                    <div class="hidden sm:flex items-center gap-2 text-gray-700 dark:text-gray-300 font-medium">
+                        <span>Welcome, {{ user.username }}</span>
+                    </div>
+                    <a href="{% url 'logout' %}"
+                        class="hidden sm:flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 text-sm font-bold tracking-wide transition-all duration-200">
+                        <span class="truncate">Logout</span>
+                    </a>
+                    {% else %}
+                    <a href="{% url 'login' %}"
+                        class="hidden sm:flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 text-sm font-bold tracking-wide transition-all duration-200">
+                        <span class="truncate">Login</span>
+                    </a>
+                    {% endif %}
+                    <a href="{% url 'courses' %}"
+                        class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold tracking-wide shadow-sm transition-transform hover:scale-105">
+                        <span class="truncate">Book Now</span>
+                    </a>
+                </div>
+            </div>
+        </header>
+        {% endblock %}
+
+        <main class="flex-grow">
+            {% block content %}
+            {% endblock %}
+        </main>
+
+        {% block footer %}
+        <footer class="bg-gray-900 dark:bg-black/50 text-white w-full" id="contact">
+            <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div class="flex flex-col gap-4">
+                        <h2 class="text-3xl font-bold">Get In Touch</h2>
+                        <p class="text-gray-300">Have questions or want to book a dive? Send us a message and we'll get
+                            back to you shortly.</p>
+                        <div class="flex gap-4 mt-4">
+                            <a aria-label="Instagram" class="text-white hover:text-accent-cyan transition-colors"
+                                href="#">
+                                <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24">
+                                    <path clip-rule="evenodd"
+                                        d="M12.315 2c-4.42 0-7.8 3.38-7.8 7.8s3.38 7.8 7.8 7.8 7.8-3.38 7.8-7.8S16.735 2 12.315 2zM8.75 12.315c0-1.955 1.588-3.543 3.543-3.543s3.543 1.588 3.543 3.543-1.588 3.543-3.543 3.543-3.543-1.588-3.543-3.543zm11.237-6.234a1.206 1.206 0 100-2.412 1.206 1.206 0 000 2.412zM12.315 5.175c-3.141 0-5.714 2.573-5.714 5.714s2.573 5.714 5.714 5.714 5.714-2.573 5.714-5.714-2.573-5.714-5.714-5.714zm0 8.878c-1.745 0-3.164-1.42-3.164-3.164s1.42-3.164 3.164-3.164 3.164 1.42 3.164 3.164-1.419 3.164-3.164 3.164zm6.756-8.625a1.88 1.88 0 11-3.76 0 1.88 1.88 0 013.76 0z"
+                                        fill-rule="evenodd"></path>
+                                </svg>
+                            </a>
+                            <a aria-label="Facebook" class="text-white hover:text-accent-cyan transition-colors"
+                                href="#">
+                                <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24">
+                                    <path clip-rule="evenodd"
+                                        d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                                        fill-rule="evenodd"></path>
+                                </svg>
+                            </a>
+                            <a aria-label="WhatsApp" class="text-white hover:text-accent-cyan transition-colors"
+                                href="#">
+                                <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24">
+                                    <path
+                                        d="M12.04 2C6.58 2 2.13 6.45 2.13 12c0 1.77.46 3.45 1.28 4.95L2 22l5.25-1.38c1.45.77 3.07 1.18 4.79 1.18h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zM12.03 20.28h-.01c-1.55 0-3.05-.44-4.35-1.25l-.31-.18-3.23.85.87-3.16-.2-.33c-.89-1.45-1.37-3.12-1.37-4.88 0-4.54 3.69-8.23 8.24-8.23 2.22 0 4.29.86 5.82 2.39s2.39 3.6 2.39 5.82c-.01 4.54-3.69 8.23-8.22 8.23zm4.52-6.55c-.25-.12-1.47-.72-1.7-.8s-.39-.12-.56.12c-.17.25-.64.8-.79.96-.15.17-.3.19-.55.06-.25-.12-1.06-.39-2.02-1.24-.75-.66-1.25-1.49-1.4-1.74-.15-.25-.02-.38.11-.5.12-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.4-.42-.55-.42h-.5c-.17 0-.43.06-.66.31-.22.25-.87.85-.87 2.07s.89 2.4 1.01 2.56c.12.17 1.76 2.68 4.27 3.77 2.5 1.08 2.5.72 2.95.7s1.47-.6 1.68-1.18c.21-.58.21-1.08.15-1.18s-.25-.18-.5-.31z">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <form class="flex flex-col gap-4">
+                        <input
+                            class="w-full bg-ocean-deep border border-gray-600 rounded-lg px-4 py-2.5 text-white placeholder-gray-400 focus:ring-accent-cyan focus:border-accent-cyan"
+                            placeholder="Your Name" type="text" />
+                        <input
+                            class="w-full bg-ocean-deep border border-gray-600 rounded-lg px-4 py-2.5 text-white placeholder-gray-400 focus:ring-accent-cyan focus:border-accent-cyan"
+                            placeholder="Your Email" type="email" />
+                        <textarea
+                            class="w-full bg-ocean-deep border border-gray-600 rounded-lg px-4 py-2.5 text-white placeholder-gray-400 focus:ring-accent-cyan focus:border-accent-cyan"
+                            placeholder="Your Message" rows="4"></textarea>
+                        <button
+                            class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-accent-cyan text-ocean-dark text-base font-bold leading-normal tracking-[0.015em] hover:bg-accent-teal"
+                            type="submit">
+                            <span class="truncate">SEND MESSAGE</span>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="border-t border-gray-700 my-12"></div>
+
+                <div class="grid grid-cols-1 gap-8 md:grid-cols-4">
+                    <div class="md:col-span-1">
+                        <div class="flex items-center gap-2">
+                            <div class="text-primary text-2xl">
+                                <span class="material-symbols-outlined">scuba_diving</span>
+                            </div>
+                            <h2 class="text-lg font-bold">AquaSense</h2>
+                        </div>
+                        <p class="mt-4 text-sm text-gray-400">Explore the world beneath the waves with us. Your
+                            adventure starts here.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold tracking-wider text-gray-200">Quick Links</h3>
+                        <ul class="mt-4 space-y-2">
+                            <li><a class="text-sm text-gray-400 hover:text-white" href="{% url 'home' %}">Home</a></li>
+                            <li><a class="text-sm text-gray-400 hover:text-white" href="{% url 'courses' %}">Courses</a>
+                            </li>
+                            <li><a class="text-sm text-gray-400 hover:text-white" href="{% url 'about' %}">About Us</a>
+                            </li>
+                            <li><a class="text-sm text-gray-400 hover:text-white" href="{% url 'contact' %}">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold tracking-wider text-gray-200">Contact Us</h3>
+                        <ul class="mt-4 space-y-2 text-sm text-gray-400">
+                            <li class="flex items-start"><span
+                                    class="material-symbols-outlined mr-2 text-base">location_on</span>123 Ocean Drive,
+                                Atlantis</li>
+                            <li class="flex items-start"><span
+                                    class="material-symbols-outlined mr-2 text-base">call</span>(123) 456-7890</li>
+                            <li class="flex items-start"><span
+                                    class="material-symbols-outlined mr-2 text-base">mail</span>info@divingexcursions.com
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold tracking-wider text-gray-200">Follow Us</h3>
+                        <div class="mt-4 flex space-x-4">
+                            <a class="text-gray-400 hover:text-white" href="#"><svg aria-hidden="true" class="h-6 w-6"
+                                    fill="currentColor" viewbox="0 0 24 24">
+                                    <path clip-rule="evenodd"
+                                        d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                                        fill-rule="evenodd"></path>
+                                </svg></a>
+                            <a class="text-gray-400 hover:text-white" href="#"><svg aria-hidden="true" class="h-6 w-6"
+                                    fill="currentColor" viewbox="0 0 24 24">
+                                    <path
+                                        d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84">
+                                    </path>
+                                </svg></a>
+                            <a class="text-gray-400 hover:text-white" href="#"><svg aria-hidden="true" class="h-6 w-6"
+                                    fill="currentColor" viewbox="0 0 24 24">
+                                    <path clip-rule="evenodd"
+                                        d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.013-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465 2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.345 2.525c.636-.247 1.363.416 2.427.465C9.795 2.013 10.148 2 12.315 2zm-2.013 6.067a3.931 3.931 0 100 7.862 3.931 3.931 0 000-7.862zM6.666 12a5.333 5.333 0 1110.666 0 5.333 5.333 0 01-10.666 0zM16.95 6.518a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"
+                                        fill-rule="evenodd"></path>
+                                </svg></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border-t border-gray-700 mt-12 pt-6 text-center text-gray-400 text-sm">
+                    <p>© 2025 AquaSense. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+        {% endblock %}
+    </div>
+    <div id="ai-chat-container" class="z-50">
+        <button id="ai-chat-button"
+            class="fixed bottom-8 right-8 bg-primary text-white h-14 px-5 rounded-full shadow-2xl transition-all duration-300 ease-in-out hover:scale-105 hover:bg-primary/90 flex items-center gap-3">
+            <span class="material-symbols-outlined">smart_toy</span>
+            <span class="font-bold text-sm">AI Advisor</span>
+        </button>
+        <div id="ai-chat-window"
+            class="fixed bottom-8 left-8 w-full max-w-sm h-[500px] md:h-[600px] bg-white dark:bg-gray-800 rounded-xl shadow-2xl flex flex-col transition-all duration-300 ease-in-out opacity-0 scale-95 invisible">
+            <div
+                class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700 flex-shrink-0">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary">smart_toy</span>
+                    <h3 class="font-bold text-gray-900 dark:text-white">AI Dive Advisor</h3>
+                </div>
+                <button id="ai-chat-close" class="text-gray-400 hover:text-gray-800 dark:hover:text-white">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div id="ai-chat-messages" class="flex-grow p-4 space-y-4 overflow-y-auto">
+                <div class="flex gap-2">
+                    <span
+                        class="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center">
+                        <span class="material-symbols-outlined text-lg">smart_toy</span>
+                    </span>
+                    <div class="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg rounded-tl-none">
+                        <p class="text-sm text-gray-800 dark:text-gray-200">Welcome! How can I help you plan your next
+                            diving adventure?</p>
+                    </div>
+                </div>
+                <div class="flex justify-end">
+                    <div class="bg-primary p-3 rounded-lg rounded-br-none">
+                        <p class="text-sm text-white">I'd like to know more about the Open Water course.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="p-4 border-t border-gray-200 dark:border-gray-700 flex-shrink-0">
+                <div class="flex items-center gap-2">
+                    <input type="text" placeholder="Type your message..."
+                        class="flex-grow rounded-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-primary focus:border-primary px-4 py-2">
+                    <button
+                        class="bg-primary text-white p-2 rounded-full h-10 w-10 flex-shrink-0 flex items-center justify-center hover:bg-primary/90">
+                        <span class="material-symbols-outlined text-lg">send</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const chatButton = document.getElementById('ai-chat-button');
+        const chatWindow = document.getElementById('ai-chat-window');
+        const closeButton = document.getElementById('ai-chat-close');
+        const chatMessages = document.getElementById('ai-chat-messages');
+        const chatInput = document.querySelector('#ai-chat-window input');
+        const sendButton = document.querySelector('#ai-chat-window button.bg-primary');
+
+        // Toggle Chat Window
+        chatButton.addEventListener('click', () => {
+            chatWindow.classList.toggle('invisible');
+            chatWindow.classList.toggle('opacity-0');
+            chatWindow.classList.toggle('scale-95');
+            if (!chatWindow.classList.contains('invisible')) {
+                chatInput.focus();
+            }
+        });
+
+        closeButton.addEventListener('click', () => {
+            chatWindow.classList.add('invisible', 'opacity-0', 'scale-95');
+        });
+
+        // Send Message Logic
+        async function sendMessage() {
+            const message = chatInput.value.trim();
+            if (!message) return;
+
+            // Add User Message
+            appendMessage('user', message);
+            chatInput.value = '';
+
+            // Add Loading State
+            const loadingId = appendLoading();
+
+            try {
+                const response = await fetch("{% url 'chat_api' %}", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    },
+                    body: JSON.stringify({ message: message })
+                });
+
+                const data = await response.json();
+
+                // Remove Loading and Add AI Response
+                removeMessage(loadingId);
+                if (data.error) {
+                    appendMessage('ai', "Sorry, I'm having trouble connecting right now. Please try again later.");
+                    console.error(data.error);
+                } else {
+                    appendMessage('ai', data.response);
+                }
+            } catch (error) {
+                removeMessage(loadingId);
+                appendMessage('ai', "Sorry, something went wrong. Please check your connection.");
+                console.error(error);
+            }
+        }
+
+        sendButton.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        function appendMessage(sender, text) {
+            const div = document.createElement('div');
+            if (sender === 'ai') {
+                div.className = 'flex gap-2';
+                div.innerHTML = `
+                    <span class="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center">
+                        <span class="material-symbols-outlined text-lg">smart_toy</span>
+                    </span>
+                    <div class="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg rounded-tl-none">
+                        <p class="text-sm text-gray-800 dark:text-gray-200">${text}</p>
+                    </div>
+                `;
+            } else {
+                div.className = 'flex justify-end';
+                div.innerHTML = `
+                    <div class="bg-primary p-3 rounded-lg rounded-br-none">
+                        <p class="text-sm text-white">${text}</p>
+                    </div>
+                `;
+            }
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function appendLoading() {
+            const id = 'loading-' + Date.now();
+            const div = document.createElement('div');
+            div.id = id;
+            div.className = 'flex gap-2';
+            div.innerHTML = `
+                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center">
+                    <span class="material-symbols-outlined text-lg">smart_toy</span>
+                </span>
+                <div class="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg rounded-tl-none flex items-center gap-1">
+                    <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                    <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                    <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.4s"></div>
+                </div>
+            `;
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            return id;
+        }
+
+        function removeMessage(id) {
+            const el = document.getElementById(id);
+            if (el) el.remove();
+        }
+
+        // Footer Observer (Hide button when near footer)
+        const footer = document.getElementById('contact');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        const observerCallback = (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    chatButton.classList.add('opacity-0', 'scale-0', 'invisible');
+                } else {
+                    chatButton.classList.remove('opacity-0', 'scale-0', 'invisible');
+                }
+            });
+        };
+        const footerObserver = new IntersectionObserver(observerCallback, observerOptions);
+        if (footer) {
+            footerObserver.observe(footer);
+        }
+    </script>
+</body>
+
+</html>
