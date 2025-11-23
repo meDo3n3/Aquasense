@@ -49,16 +49,12 @@ import logging
 # Configure logging
 logger = logging.getLogger(__name__)
 
-# Configure Gemini API
-# API Key is loaded from .env file
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-
 
 @csrf_exempt
 def chat_view(request):
     if request.method == 'POST':
         try:
-            # Check if API key exists
+            # Check if API key exists and configure Gemini
             api_key = os.getenv("GEMINI_API_KEY")
             if not api_key:
                 logger.error("GEMINI_API_KEY not found in environment variables")
@@ -66,7 +62,9 @@ def chat_view(request):
                     'error': 'API key not configured. Please contact support.'
                 }, status=500)
             
-            logger.info(f"API Key found: {api_key[:10]}...")  # Log first 10 chars only
+            # Configure Gemini with the API key
+            genai.configure(api_key=api_key)
+            logger.info(f"API Key configured successfully")
             
             data = json.loads(request.body)
             user_message = data.get('message', '')
