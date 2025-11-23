@@ -2,21 +2,33 @@
 {% load static %}
 
 {% block content %}
-<section class="relative w-full h-[55vh] md:h-[70vh] flex items-center justify-center text-white" id="home">
+<section
+  class="relative w-full h-[55vh] md:h-[70vh] flex items-center justify-center text-white overflow-hidden vignette"
+  id="home">
   <div class="absolute inset-0 bg-cover bg-center"
     data-alt="A split-level underwater and above-water photo showing a clear blue sky and a vibrant coral reef below the surface."
     style='background-image: url("https://res.cloudinary.com/dp2ov37tr/image/upload/v1763854347/aquasense/aquasense/hero_bg.png");'>
   </div>
-  <div class="absolute inset-0 bg-black/40"></div>
-  <div class="relative z-10 flex flex-col gap-6 items-center text-center px-4">
-    <h1 class="text-4xl font-black leading-tight tracking-[-0.033em] md:text-6xl">
-      EXPLORE THE UNDERWATER WORLD
-    </h1>
-    <h2 class="text-base font-normal leading-normal md:text-xl max-w-2xl">
-      Embark on an unforgettable journey into the deep blue with our expert-led AquaSense.
-    </h2>
+  <!-- Pattern Overlay -->
+  <div class="absolute inset-0 pattern-dots"></div>
+  <!-- Premium Gradient Overlay -->
+  <div class="absolute inset-0 gradient-overlay-premium"></div>
+  <!-- Dark Gradient for Text Contrast -->
+  <div class="absolute inset-0 gradient-overlay-dark"></div>
+
+  <!-- Hero Content with Glass Morphism -->
+  <div class="relative z-10 flex flex-col gap-6 items-center text-center px-4 max-w-4xl">
+    <div class="glass-card rounded-3xl p-8 md:p-12 fade-in-up shadow-strong">
+      <h1 class="text-4xl font-black leading-tight tracking-[-0.033em] md:text-6xl mb-4">
+        EXPLORE THE <span class="gradient-text">UNDERWATER WORLD</span>
+      </h1>
+      <h2 class="text-base font-normal leading-normal md:text-xl max-w-2xl mx-auto opacity-90">
+        Embark on an unforgettable journey into the deep blue with our expert-led AquaSense.
+      </h2>
+    </div>
     <a href="{% url 'courses' %}"
-      class="shimmer-button flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-8 border-2 border-white bg-transparent text-white text-base font-bold leading-normal tracking-[0.015em]">
+      class="animate-float shimmer-button glow-primary-hover flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 md:h-14 px-8 md:px-12 gradient-primary text-white text-base md:text-lg font-bold leading-normal tracking-[0.015em] shadow-strong transition-all duration-300 hover:scale-105 ripple">
+      <span class="material-symbols-outlined mr-2">scuba_diving</span>
       <span class="truncate">BOOK NOW</span>
     </a>
   </div>
@@ -30,47 +42,71 @@
 
   <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-4">
 
-    <div class="group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
-      <div class="h-48 w-full bg-cover bg-center"
-        style='background-image: url("https://res.cloudinary.com/dp2ov37tr/image/upload/v1763854348/aquasense/aquasense/open_water.png");'
-        data-alt="A scuba diver descending into clear water."></div>
-      <div class="p-4 text-center">
+    <div
+      class="group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-medium card-hover fade-in-up stagger-1">
+      <div class="h-48 w-full image-zoom">
+        <div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+          style='background-image: url("https://res.cloudinary.com/dp2ov37tr/image/upload/v1763854348/aquasense/aquasense/open_water.png");'
+          data-alt="A scuba diver descending into clear water."></div>
+      </div>
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      </div>
+      <div class="p-4 text-center relative z-10">
         <p class="text-lg font-bold text-gray-900 dark:text-white mt-1">Open Water Diver</p>
         <p class="text-sm text-gray-600 dark:text-gray-400 mt-1 mb-2">Beginner's scuba diving access</p>
-        <p class="text-xl font-extrabold text-primary dark:text-accent-cyan">$350</p>
+        <p class="text-xl font-extrabold gradient-text">$350</p>
       </div>
     </div>
 
-    <div class="group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
-      <div class="h-48 w-full bg-cover bg-center"
-        style='background-image: url("https://res.cloudinary.com/dp2ov37tr/image/upload/v1763854349/aquasense/aquasense/advanced_skills.png");'
-        data-alt="A diver performing deep dive skills."></div>
-      <div class="p-4 text-center">
+    <div
+      class="group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-medium card-hover fade-in-up stagger-2">
+      <div class="h-48 w-full image-zoom">
+        <div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+          style='background-image: url("https://res.cloudinary.com/dp2ov37tr/image/upload/v1763854349/aquasense/aquasense/advanced_skills.png");'
+          data-alt="A diver performing deep dive skills."></div>
+      </div>
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      </div>
+      <div class="p-4 text-center relative z-10">
         <p class="text-lg font-bold text-gray-900 dark:text-white mt-1">Advanced Diving Skills</p>
         <p class="text-sm text-gray-600 dark:text-gray-400 mt-1 mb-2">Enhance your diving skills</p>
-        <p class="text-xl font-extrabold text-primary dark:text-accent-cyan">$450</p>
+        <p class="text-xl font-extrabold gradient-text">$450</p>
       </div>
     </div>
 
-    <div class="group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
-      <div class="h-48 w-full bg-cover bg-center"
-        style='background-image: url("https://res.cloudinary.com/dp2ov37tr/image/upload/v1763854350/aquasense/aquasense/coral_reef.png");'
-        data-alt="Vibrant coral reef landscape."></div>
-      <div class="p-4 text-center">
+    <div
+      class="group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-medium card-hover fade-in-up stagger-3">
+      <div class="h-48 w-full image-zoom">
+        <div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+          style='background-image: url("https://res.cloudinary.com/dp2ov37tr/image/upload/v1763854350/aquasense/aquasense/coral_reef.png");'
+          data-alt="Vibrant coral reef landscape."></div>
+      </div>
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      </div>
+      <div class="p-4 text-center relative z-10">
         <p class="text-lg font-bold text-gray-900 dark:text-white mt-1">Coral Reef Exploration</p>
         <p class="text-sm text-gray-600 dark:text-gray-400 mt-1 mb-2">A description of marine life secession</p>
-        <p class="text-xl font-extrabold text-primary dark:text-accent-cyan">$200</p>
+        <p class="text-xl font-extrabold gradient-text">$200</p>
       </div>
     </div>
 
-    <div class="group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
-      <div class="h-48 w-full bg-cover bg-center"
-        style='background-image: url("https://res.cloudinary.com/dp2ov37tr/image/upload/v1763854353/aquasense/aquasense/wreck_diving.png");'
-        data-alt="A diver exploring a sunken shipwreck."></div>
-      <div class="p-4 text-center">
+    <div
+      class="group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-medium card-hover fade-in-up stagger-4">
+      <div class="h-48 w-full image-zoom">
+        <div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+          style='background-image: url("https://res.cloudinary.com/dp2ov37tr/image/upload/v1763854353/aquasense/aquasense/wreck_diving.png");'
+          data-alt="A diver exploring a sunken shipwreck."></div>
+      </div>
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      </div>
+      <div class="p-4 text-center relative z-10">
         <p class="text-lg font-bold text-gray-900 dark:text-white mt-1">Wreck Diving</p>
         <p class="text-sm text-gray-600 dark:text-gray-400 mt-1 mb-2">Underwater shipwreck adventures</p>
-        <p class="text-xl font-extrabold text-primary dark:text-accent-cyan">$500</p>
+        <p class="text-xl font-extrabold gradient-text">$500</p>
       </div>
     </div>
 
