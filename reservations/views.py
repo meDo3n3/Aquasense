@@ -54,8 +54,20 @@ genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 def chat_view(request):
     if request.method == 'POST':
         try:
+            # Check if API key exists
+            api_key = os.getenv("GEMINI_API_KEY")
+            if not api_key:
+                print("ERROR: GEMINI_API_KEY not found in environment variables")
+                return JsonResponse({
+                    'error': 'API key not configured. Please contact support.'
+                }, status=500)
+            
+            print(f"API Key found: {api_key[:10]}...")  # Log first 10 chars only
+            
             data = json.loads(request.body)
             user_message = data.get('message', '')
+            
+            print(f"User message: {user_message}")
             
             # System prompt with business details
             system_prompt = """
@@ -78,19 +90,29 @@ def chat_view(request):
             Keep responses concise (under 100 words) unless detailed info is requested.
             """
             
+            print("Initializing Gemini model...")
             model = genai.GenerativeModel('gemini-2.0-flash')
             chat = model.start_chat(history=[
                 {'role': 'user', 'parts': [system_prompt]},
                 {'role': 'model', 'parts': ["Understood. I am ready to assist AquaSense customers."]}
             ])
             
+            print("Sending message to Gemini...")
             response = chat.send_message(user_message)
+            print(f"Response received: {response.text[:50]}...")
+            
             return JsonResponse({'response': response.text})
             
         except Exception as e:
-            with open('debug_log.txt', 'w') as f:
-                f.write(str(e))
-            return JsonResponse({'error': str(e)}, status=500)
+            error_msg = str(e)
+            print(f"ERROR in chat_view: {error_msg}")
+            import traceback
+            traceback.print_exc()
+            
+            # Return more specific error
+            return JsonResponse({
+                'error': f'Chat service error: {error_msg}'
+            }, status=500)
     
     return JsonResponse({'error': 'Invalid request'}, status=400)
 
